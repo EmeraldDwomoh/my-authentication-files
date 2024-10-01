@@ -84,6 +84,10 @@ CREATE TABLE `student_info` (
   `last_login` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Table structure for table `student_progress`
+--
+
 CREATE TABLE `student_progress` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -92,6 +96,30 @@ CREATE TABLE `student_progress` (
   `topic` varchar(255) NOT NULL,
   `stage` int(3) NOT NULL,
   `points` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `teacher_info`
+--
+
+CREATE TABLE `teacher_info` (
+  `id` int(11) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `schoolAddress` varchar(255) DEFAULT NULL,
+  `schoolName` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `signInProvider` varchar(255) NOT NULL,
+  `profliepictureURL` varchar(255) DEFAULT NULL,
+  `verify_token` varchar(255) DEFAULT NULL,
+  `verify_status` tinyint(2) NOT NULL DEFAULT 0 COMMENT '0 = no, 1 = yes',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `last_login` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -120,6 +148,12 @@ ADD PRIMARY KEY (`id`);
 -- Indexes for table `student_progress`
 --
 ALTER TABLE `student_progress`
+ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teacher_info`
+--
+ALTER TABLE `teacher_info`
 ADD PRIMARY KEY (`id`);
 
 --
@@ -153,6 +187,12 @@ ALTER TABLE `student_progress`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
+--
+-- AUTO_INCREMENT for table `teacher_info`
+--
+ALTER TABLE `teacher_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
